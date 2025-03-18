@@ -1,12 +1,19 @@
+// App.tsx
 import './App.css';
-import TodoList from './ToDoList';
+import { JournalList } from './JournalList';
+import { ToDoList } from './ToDoList';
 
 function App() {
   return (
-    <div className="App">
-      <TodoList />
-    </div>
-  );
+      <div className="app-container">
+        <div className="journal-list">
+          <JournalList />
+        </div>
+        <div className="todo-list">
+          <ToDoList />
+        </div>
+      </div>
+    );
 }
 
 export default App;
