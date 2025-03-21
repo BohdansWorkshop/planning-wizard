@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import { TaskItem } from "./TaskItem";
 import { Journal, useTaskStore } from "./useTaskStore";
 
 interface JournalItemProps {

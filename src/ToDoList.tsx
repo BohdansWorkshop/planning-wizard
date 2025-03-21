@@ -3,7 +3,7 @@ import { useTaskStore } from "./useTaskStore";
 import { TaskItem } from "./TaskItem";
 
 export function ToDoList() {
-    const { journals, activeJournalId, addTask, completeTask, removeTask } = useTaskStore();
+    const { journals, activeJournalId, addTask, completeTask, removeTask, editTask } = useTaskStore();
     const [input, setInput] = useState("");
     const activeJournal = journals.find(journal => journal.id === activeJournalId);
 
@@ -62,6 +62,7 @@ export function ToDoList() {
                                 task={task}
                                 completeTask={completeTask}
                                 removeTask={removeTask}
+                                editTask={editTask}
                             />
                         ))}
                     </ul>

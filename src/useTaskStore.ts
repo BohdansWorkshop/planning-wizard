@@ -22,6 +22,7 @@ interface TaskStore {
     addTask: (description: string) => void;
     completeTask: (id: number) => void;
     removeTask: (id: number) => void;
+    editTask: (id: number, description: string) => void;
 }
 
 export const useTaskStore = create<TaskStore>((set) => ({
@@ -75,6 +76,18 @@ export const useTaskStore = create<TaskStore>((set) => ({
                     ? { ...journal, tasks: journal.tasks.filter((task) => task.id !== id) }
                     : journal)
         }));
-    }
+    },
 
+    editTask: (id: number, description: string) => {
+        if (!description.trim())
+            return;
+
+        set((state) => ({
+            journals: state.journals.map((journal) =>
+                journal.id === state.activeJournalId
+                    ? { ...journal, tasks: journal.tasks.map((task) => task.id === id ? { ...task, description } : task) }
+                    : journal
+            )
+        }));
+    }
 }));
