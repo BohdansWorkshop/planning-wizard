@@ -24,3 +24,38 @@ body {
     padding: 20px;
     overflow-y: auto;
 }
+
+.task-item.low {
+    background-color: #f0f8ff;
+}
+
+.task-item.medium {
+    background-color: #fffacd;
+}
+
+.task-item.high {
+    background-color: #f8d7da;
+}
+
+.task-item.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.priority {
+    font-weight: bold;
+    margin-left: 10px;
+    font-size: 0.9em;
+}
+
+.priority.low {
+    color: #007bff;
+}
+
+.priority.medium {
+    color: #ffc107;
+}
+
+.priority.high {
+    color: #dc3545;
+}

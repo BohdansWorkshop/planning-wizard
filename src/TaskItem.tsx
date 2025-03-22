@@ -1,18 +1,17 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { Task } from "./useTaskStore";
 
 interface TaskItemProps {
     task: Task;
-    completeTask: (id: number) => void;
-    removeTask: (id: number) => void;
-    editTask: (id: number, description: string) => void;
+    completeTask: (id: string) => void;
+    removeTask: (id: string) => void;
+    editTask: (id: string, description: string) => void;
 }
 
 export function TaskItem({ task, completeTask, removeTask, editTask }: TaskItemProps) {
     const [isEditing, setIsEditing] = useState(false);
     const [editedDescription, setEditedDescription] = useState(task.description);
     const inputRef = useRef<HTMLInputElement>(null);
-
 
     useEffect(() => {
         if (isEditing) {
@@ -34,9 +33,9 @@ export function TaskItem({ task, completeTask, removeTask, editTask }: TaskItemP
             handleEditBlur();
         }
     };
-
+    const priorityClass = task.priority.toLowerCase();
     return (
-        <li className={task.completed ? "selected" : ""}>
+        <li className={`task-item ${task.completed ? "completed" : ""} ${priorityClass}`}>
             {
                 isEditing
                     ? (
